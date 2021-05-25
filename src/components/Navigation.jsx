@@ -14,88 +14,13 @@ const Navigation = () => {
           <div className="header-menu">
             <div className="box-header-nav menu-nocenter">
               <ul id="menu-primary-menu" className="clone-main-menu kreen-clone-mobile-menu kreen-nav main-menu">
+                
                 <li id="menu-item-230" className="menu-item menu-item-type-post_type menu-item-object-megamenu menu-item-230 parent parent-megamenu item-megamenu menu-item-has-children">
-                  <a className="kreen-menu-item-title" title="Home" href="index.html">Home</a>
-                  <span className="toggle-submenu" />
-                  <div className="submenu megamenu megamenu-home">
-                    <div className="demo-item">
-                      <div className="row">
-                        <div className="col-md-6 col-lg-4 col-sm-6">
-                          <div className="dreaming_single_image dreaming_content_element az_align_left shadow-img">
-                            <figure className="dreaming_wrapper az_figure">
-                              <a href="index.html" target="_self" className="az_single_image-wrapper az_box_border_grey effect normal-effect dark-bg">
-                                <img src="assets/images/demo001.jpg" className="az_single_image-img attachment-full" alt="img" />
-                              </a>
-                            </figure>
-                          </div>
-                          <h5 className="az_custom_heading">
-                            <a href="index.html">Home 01</a>
-                          </h5>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-sm-6">
-                          <div className="dreaming_single_image dreaming_content_element az_align_left shadow-img">
-                            <figure className="dreaming_wrapper az_figure">
-                              <a href="home-02.html" target="_self" className="az_single_image-wrapper az_box_border_grey effect normal-effect dark-bg ">
-                                <img src="assets/images/demo002.jpg" className="az_single_image-img attachment-full" alt="img" /></a>
-                            </figure>
-                          </div>
-                          <h5 className="az_custom_heading">
-                            <a href="home-02.html">Home 02</a>
-                          </h5>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-sm-6">
-                          <div className="dreaming_single_image dreaming_content_element az_align_left shadow-img">
-                            <figure className="dreaming_wrapper az_figure">
-                              <a href="home-03.html" target="_self" className="az_single_image-wrapper az_box_border_grey effect normal-effect dark-bg">
-                                <img src="assets/images/demo003.jpg" className="az_single_image-img attachment-full" alt="img" />
-                              </a>
-                            </figure>
-                          </div>
-                          <h5 className="az_custom_heading">
-                            <a href="home-03.html">Home 03</a>
-                          </h5>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-sm-6">
-                          <div className="dreaming_single_image dreaming_content_element az_align_left shadow-img">
-                            <figure className="dreaming_wrapper az_figure">
-                              <a href="home-04.html" target="_self" className="az_single_image-wrapper az_box_border_grey effect normal-effect dark-bg ">
-                                <img src="assets/images/demo004.jpg" className="az_single_image-img attachment-full" alt="img" />
-                              </a>
-                            </figure>
-                          </div>
-                          <h5 className="az_custom_heading">
-                            <a href="home-04.html">Home 04</a></h5>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-sm-6">
-                          <div className="dreaming_single_image dreaming_content_element az_align_left shadow-img">
-                            <figure className="dreaming_wrapper az_figure">
-                              <a href="home-05.html" target="_self" className="az_single_image-wrapper az_box_border_grey effect normal-effect dark-bg">
-                                <img src="assets/images/demo005.jpg" className="az_single_image-img attachment-full" alt="img" />
-                              </a>
-                            </figure>
-                          </div>
-                          <h5 className="az_custom_heading">
-                            <a href="home-05.html">Home 05</a>
-                          </h5>
-                        </div>
-                        <div className="col-md-6 col-lg-4 col-sm-6">
-                          <div className="dreaming_single_image dreaming_content_element az_align_left shadow-img">
-                            <figure className="dreaming_wrapper az_figure">
-                              <a href="home-06.html" target="_self" className="az_single_image-wrapper az_box_border_grey effect normal-effect dark-bg ">
-                                <img src="assets/images/demo006.jpg" className="az_single_image-img attachment-full" alt="img" />
-                              </a>
-                            </figure>
-                          </div>
-                          <h5 className="az_custom_heading">
-                            <a href="home-06.html">Home 06</a>
-                          </h5>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <a className="kreen-menu-item-title" title="Home" href="index.html">Inicio</a>
                 </li>
+
                 <li id="menu-item-228" className="menu-item menu-item-type-post_type menu-item-object-megamenu menu-item-228 parent parent-megamenu item-megamenu menu-item-has-children">
-                  <a className="kreen-menu-item-title" title="Shop" href="shop.html">Shop</a>
+                  <a className="kreen-menu-item-title" title="Shop" href="shop.html">Tienda</a>
                   <span className="toggle-submenu" />
                   <div className="submenu megamenu megamenu-shop">
                     <div className="row">
@@ -742,7 +667,7 @@ const Navigation = () => {
             </div>
             <div className="widget kreen widget_shopping_cart">
               <div className="widget_shopping_cart_content">
-                <h3 className="minicart-title">Your Cart<span className="minicart-number-items">3</span></h3>
+                <h3 className="minicart-title">Carrito<span className="minicart-number-items">3</span></h3>
                 <ul className="kreen-mini-cart cart_list product_list_widget">
                   <li className="kreen-mini-cart-item mini_cart_item">
                     <a href="#" className="remove remove_from_cart_button">×</a>

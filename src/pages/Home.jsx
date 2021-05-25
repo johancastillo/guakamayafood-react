@@ -5,7 +5,6 @@ import Footer from "../components/Footer"
 import FooterMobile from "../components/FooterMobile"
 import InstagramSection from "../components/InstagramSection"
 import LastPosts from "../components/LastPosts"
-import Navigation from "../components/Navigation"
 import Slider from "../components/Slider"
 import TopTrends from "../components/TopTrends"
 
@@ -14,7 +13,7 @@ import TopTrends from "../components/TopTrends"
 const Home = () => {
     return (
         <>
-            <Navigation />
+            
             <div class="fullwidth-template">
                 <Slider />
                 <Banners />
