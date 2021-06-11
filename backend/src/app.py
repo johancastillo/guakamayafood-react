@@ -104,14 +104,27 @@ class User(db.Model):
 # Create tables
 db.create_all()
 
-# Database Schema
+# ********************
+# * Database Schemas *
+# ********************
+
 class ProductSchema(ma.Schema):
     class Meta:
         fields = ('id', 'title', 'price', 'discount_price', 'stars', 'categorie', 'description')
 
-# Instance Schema
+class UserSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'username')
+
+# *******************
+# * Instance Schema *
+# *******************
+
 product_schema = ProductSchema()
 products_schema = ProductSchema(many = True)
+
+
+
 
 # ***************************
 # * Endpoints  for products *
@@ -187,6 +200,13 @@ def delete_product(id):
     db.session.commit()
 
     return product_schema.jsonify(product)
+
+
+# ***********************
+# * Endpoints for users *
+# ***********************
+
+
 
 
 # ***********

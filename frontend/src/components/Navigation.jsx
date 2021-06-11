@@ -1,6 +1,6 @@
 
 
-
+import { Link } from "wouter"
 
 
 const Navigation = () => {
@@ -556,24 +556,38 @@ const Navigation = () => {
                     <span className="pe-7s-user" />
                   </a>
                   <ul className="sub-menu">
+                    
                     <li className="menu-item kreen-MyAccount-navigation-link kreen-MyAccount-navigation-link--dashboard is-active">
                       <a href="#">Dashboard</a>
                     </li>
+                    
                     <li className="menu-item kreen-MyAccount-navigation-link kreen-MyAccount-navigation-link--orders">
                       <a href="#">Orders</a>
                     </li>
+                    
+                    
                     <li className="menu-item kreen-MyAccount-navigation-link kreen-MyAccount-navigation-link--downloads">
                       <a href="#">Downloads</a>
                     </li>
+                    
                     <li className="menu-item kreen-MyAccount-navigation-link kreen-MyAccount-navigation-link--edit-adchair">
                       <a href="#">Addresses</a>
                     </li>
+                    
                     <li className="menu-item kreen-MyAccount-navigation-link kreen-MyAccount-navigation-link--edit-account">
                       <a href="#">Account details</a>
                     </li>
+                    
                     <li className="menu-item kreen-MyAccount-navigation-link kreen-MyAccount-navigation-link--customer-logout">
                       <a href="#">Logout</a>
                     </li>
+
+                    <li className="menu-item kreen-MyAccount-navigation-link kreen-MyAccount-navigation-link--customer-logout">
+                      <Link to="/login">
+                      <a href="#">Login</a>
+                      </Link>
+                    </li>
+
                   </ul>
                 </div>
                 <div className="block-minicart block-dreaming kreen-mini-cart kreen-dropdown">
