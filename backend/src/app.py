@@ -113,9 +113,9 @@ class ProductSchema(ma.Schema):
 product_schema = ProductSchema()
 products_schema = ProductSchema(many = True)
 
-# *************
-# * Endpoints *
-# *************
+# ***************************
+# * Endpoints  for products *
+# ***************************
 
 # Root route
 @app.route("/")
@@ -176,6 +176,16 @@ def edit_product(id):
     db.session.commit()
 
     # Response
+    return product_schema.jsonify(product)
+
+# Delete one product
+@app.route("/api/products/<id>", methods = ["DELETE"])
+def delete_product(id):
+    
+    product = Product.query.get(id)
+    db.session.delete(product)
+    db.session.commit()
+
     return product_schema.jsonify(product)
 
 
