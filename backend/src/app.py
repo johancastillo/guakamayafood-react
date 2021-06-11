@@ -1,19 +1,21 @@
 # Dependencies
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
 # Flask intance
 app = Flask(__name__)
 
-# Database parameter
-host = "127.0.0.1"         
-user = "someUser"          
-passwd = "somePassword"    
-database = "ucb-pvapp" 
+# Database parameters
+enginedb = "mysql"         
+driver = "pymysql"         
+host = "localhost"         
+user = "jcjohan"          
+password = "password"    
+database = "guakamayafood" 
 
 # Database MySQL settings
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://jcjohan:password@localhost/guakamayafood"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"{enginedb}+{driver}://{user}:{password}@{host}/{database}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 # ORM settings
@@ -22,8 +24,11 @@ ma = Marshmallow(app)
 
 # Data Modeling
 class Product(db.Model):
+    __tablename__ = "products"
+
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(70), unique = True, nullable = False)
+    image = db.Column(db.String(200), nullable = False)
     price = db.Column(db.Float, default = 0)
     discount_price = db.Column(db.Float, default = 0)
     stars = db.Column(db.Integer, default = 0)
@@ -37,9 +42,13 @@ class Product(db.Model):
         self.stars = stars
         self.categorie = categorie
         self.description = description
+    
+    
 
 
 class Categorie(db.Model):
+    __tablename__ = "categories"
+
     id = db.Column(db.Integer, primary_key = True)
     title = db.Column(db.String(70), unique = True)
     products_quantity = db.Column(db.Integer, default = 0)
@@ -51,6 +60,8 @@ class Categorie(db.Model):
 
 
 class Order(db.Model):
+    __tablename__ = "orders"
+
     id = db.Column(db.Integer, primary_key = True)
     user = db.Column(db.String(70))
     products = db.Column(db.String(70))
@@ -63,6 +74,8 @@ class Order(db.Model):
 
 
 class User(db.Model):
+    __tablename__ = "users"
+
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(70), unique = True)
     first_name = db.Column(db.String(70))
@@ -97,7 +110,7 @@ products_schema = ProductSchema(many = True)
 # Endpoints
 @app.route("/")
 def home():
-    return "<h1>Welcome to my API REST with Flask!</h1>"
+    return render_template("index.html")
 
 @app.route("/api/products", methods = ['POST'])
 def create_product():
