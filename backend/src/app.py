@@ -3,6 +3,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 
+
 # Flask intance
 app = Flask(__name__)
 

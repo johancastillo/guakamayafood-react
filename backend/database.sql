@@ -9,7 +9,10 @@ VALUES  ("Empanada de carne", 2, 1.5, 4, "Desayunos", "Empanada sabrosa", "http:
         ("Bollitos de maiz", 2, 4.5, 4, "Desayunos", "Empanada sabrosa", "http://localhost:8080/static/img/design.png"),
         ("Ceviche", 12, 1.5, 1, "Almuerzos", "Empanada sabrosa", "http://localhost:8080/static/img/design.png"),
         ("Tacos", 240, 1.5, 2, "Desayunos", "Empanada sabrosa", "http://localhost:8080/static/img/design.png"),
-        ("Mistolín", 2, 1.5, 3.5, "Desayunos", "Empanada sabrosa", "http://localhost:8080/static/img/design.png");
+        ("Mistolín", 2, 1.5, 3.5, "Desayunos", "Empanada sabrosa", "http://localhost:8080/static/img/design.png"),
+        ("Cocacola", 2, 1.5, 3.5, "Bebidas", "Cocacola", "http://localhost:8080/static/img/design.png"),
+        ("Pepsicola", 2, 1.5, 3.5, "Desayunos", "Coca sabrosa", "http://localhost:8080/static/img/design.png"),
+        ("Glup", 2, 1.5, 3.5, "Bebidas", "No sabrosa", "http://localhost:8080/static/img/design.png");
 
 
 INSERT INTO users (username, first_name, last_name, email, password, country, city, birthday)
