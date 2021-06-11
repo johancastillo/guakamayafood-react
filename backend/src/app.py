@@ -22,7 +22,11 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
 
-# Data Modeling
+# *****************
+# * Data Modeling *
+# *****************
+
+# Products table
 class Product(db.Model):
     __tablename__ = "products"
 
@@ -45,7 +49,7 @@ class Product(db.Model):
     
     
 
-
+# Categories table
 class Categorie(db.Model):
     __tablename__ = "categories"
 
@@ -58,7 +62,7 @@ class Categorie(db.Model):
         self.title = title
         self.products = products
 
-
+# Orders table
 class Order(db.Model):
     __tablename__ = "orders"
 
@@ -73,11 +77,14 @@ class Order(db.Model):
         self.products = products
 
 
+# Users table
 class User(db.Model):
     __tablename__ = "users"
 
     id = db.Column(db.Integer, primary_key = True)
     username = db.Column(db.String(70), unique = True)
+    email = db.Column(db.String(70), unique = True)
+    password = db.Column(db.String(200))
     first_name = db.Column(db.String(70))
     last_name = db.Column(db.String(70))
     country = db.Column(db.String(70))
@@ -106,12 +113,16 @@ class ProductSchema(ma.Schema):
 product_schema = ProductSchema()
 products_schema = ProductSchema(many = True)
 
+# *************
+# * Endpoints *
+# *************
 
-# Endpoints
+# Root route
 @app.route("/")
 def home():
     return render_template("index.html")
 
+# Create product
 @app.route("/api/products", methods = ['POST'])
 def create_product():
     # print(request.json)
@@ -130,7 +141,7 @@ def create_product():
 
     return product_schema.jsonify(new_product)
 
-
+# Get all products
 @app.route("/api/products", methods = ["GET"])
 def get_products():
     
@@ -140,12 +151,36 @@ def get_products():
     return jsonify(result)
 
 
+# Get single product
 @app.route("/api/products/<id>", methods = ["GET"])
 def single_product(id):
+    product = Product.query.get(id)
 
-    return ""
+    return product_schema.jsonify(product)
+
+# Modificate single product
+@app.route("/api/products/<id>", methods = ["PUT"])
+def edit_product(id):
+    # Get product
+    product = Product.query.get(id)
+    
+    # Get data
+    title = request.json["title"]
+    price = request.json["price"]
+
+    # Change values
+    product.title = title
+    product.price = price
+
+    # Execute sentence
+    db.session.commit()
+
+    # Response
+    return product_schema.jsonify(product)
 
 
-# Run app
+# ***********
+# * Run app *
+# ***********
 app.run(port = 8080, debug = True, host = "0.0.0.0")
 
