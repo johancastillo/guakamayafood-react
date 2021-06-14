@@ -1,7 +1,9 @@
 # Dependencies
+from os import truncate
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from crypt import crypt
 
 
 # Flask intance
@@ -100,6 +102,18 @@ class User(db.Model):
         self.products = products
 
 
+class Session(db.Model):
+    __tablename__ = "sessions"
+
+    id = db.Column(db.Integer, primary_key = True)
+    email = db.Column(db.String(200), unique = True, nullable = False)
+    token = db.Column(db.String(200), unique = True)
+
+    def __init__(self, email, token):
+        self.email = email
+        self.token = token
+
+
 
 
 # Create tables
@@ -115,7 +129,11 @@ class ProductSchema(ma.Schema):
 
 class UserSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'username')
+        fields = ('id', 'username', 'email', 'password', 'first_name', 'last_name', 'country', 'city', 'birthday')
+
+class SessionSchema(ma.Schema):
+    class Meta:
+        fields = ('id', 'email', 'token')
 
 # *******************
 # * Instance Schema *
@@ -124,7 +142,11 @@ class UserSchema(ma.Schema):
 product_schema = ProductSchema()
 products_schema = ProductSchema(many = True)
 
+session_schema = SessionSchema()
+sessions_schema = SessionSchema(many = True)
 
+user_schema = UserSchema()
+users_schema = UserSchema(many = True)
 
 
 # ***************************
@@ -206,7 +228,37 @@ def delete_product(id):
 # ***********************
 # * Endpoints for users *
 # ***********************
+@app.route("/api/login", methods = ['POST'])
+def login():
+    email = request.json['email']
+    password = request.json['password']
+    password = crypt(password, "")
 
+    # Filter user
+    user = db.session.query(User).filter_by(email = "jcjohan2707@gmail.com").first()
+    
+    # Validates data of user
+    password_validate = user.password == password
+    email_validate = user.email == email
+    
+    # Response generate
+    if password_validate and email_validate:
+        token = crypt(user.username + user.password)
+        
+
+        response = token
+
+    elif not password_validate:
+        response = "Contraseña incorrecta"
+
+    elif not email_validate:
+        response = "Email incorrecto"
+
+    else:
+        response = "Ha ocuurido un error"
+
+
+    return jsonify({'response': str(password_validate)})
 
 
 
