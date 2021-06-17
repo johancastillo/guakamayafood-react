@@ -4,6 +4,7 @@ from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from crypt import crypt
+import hashlib
 
 
 # Flask intance
@@ -24,6 +25,15 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 # ORM settings
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
+
+
+# **********
+# * SHA256 *
+# **********
+class HASH:
+    def hashGenerator(hash):
+        digest = hash.hexdigest()
+        return digest
 
 # *****************
 # * Data Modeling *
@@ -232,13 +242,17 @@ def delete_product(id):
 def login():
     email = request.json['email']
     password = request.json['password']
-    password = crypt(password, "")
+    
+    binaryPassword = bytes(password, 'utf8')
+    h = hashlib.new("sha256", binaryPassword)
+    passwordHash = HASH.hashGenerator(h)
+
 
     # Filter user
     user = db.session.query(User).filter_by(email = "jcjohan2707@gmail.com").first()
     
     # Validates data of user
-    password_validate = user.password == password
+    password_validate = user.password == passwordHash
     email_validate = user.email == email
     
     # Response generate
@@ -258,7 +272,7 @@ def login():
         response = "Ha ocuurido un error"
 
 
-    return jsonify({'response': str(password_validate)})
+    return jsonify({'response': str(response)})
 
 
 

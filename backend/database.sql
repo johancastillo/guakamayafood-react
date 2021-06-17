@@ -16,9 +16,8 @@ VALUES  ("Empanada de carne", 2, 1.5, 4, "Desayunos", "Empanada sabrosa", "http:
 
 
 INSERT INTO users (username, first_name, last_name, email, password, country, city, birthday)
-VALUES ("jcjohan2707", "Johan Alejandro", "Garcia Castillo", "jcjohan2707@gmail.com", "sa3tHJ3/KuYvI", "Venezuela", "Caracas", "27/07/2001"),
-        ("yoiberth_p", "Yoiberth", "Paredes", "jcjohan27@gmail.com", "sa3tHJ3/KuYvI", "Venezuela", "Caracas", "27/07/1998"),
-        ("compralotodo", "Andrea Johana", "Guerra Castillo", "johan2707@gmail.com", "sa3tHJ3/KuYvI", "Venezuela", "Caracas", "27/07/2001");
+VALUES ("jcjohan2707", "Johan Alejandro", "Garcia Castillo", "jcjohan2707@gmail.com", "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "Venezuela", "Caracas", "27/07/2001"),
+        ("yoiberth_p", "Yoiberth", "Paredes", "jcjohan27@gmail.com", "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "Venezuela", "Caracas", "27/07/1998"),
+        ("compralotodo", "Andrea Johana", "Guerra Castillo", "johan2707@gmail.com", "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", "Venezuela", "Caracas", "27/07/2001");
 
-INSERT INTO sessions (email, token) 
-VALUES ("jc")
+
